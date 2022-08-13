@@ -1,9 +1,9 @@
-function todoReducer(state = { value: 0 }, action) {
+function todoReducer(state = { value: [] }, action) {
   switch (action.type) {
-    case 'counter/add':
-      return {}
+    case 'task/add':
+      return { ...state, value: "hi" + state }
 
-    case 'counter/remove':
+    case 'task/remove':
       return {}
 
     default:
