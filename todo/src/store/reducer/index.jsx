@@ -1,7 +1,7 @@
-function todoReducer(state = { value: [] }, action) {
+function todoReducer(state = ["1"], action, text) {
   switch (action.type) {
     case 'task/add':
-      return { ...state, value: "hi" + state }
+      return { ...state, value: [action.payload, state.value] }
 
     case 'task/remove':
       return {}
