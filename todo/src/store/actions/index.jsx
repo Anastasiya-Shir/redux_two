@@ -1,8 +1,4 @@
-export const addTask = (payload) => (
-  {
-    type: 'task/add',
-
-    payload,
-
-  }
-)
+export const addTask = (task) => ({
+  type: 'task/addTask',
+  payload: task
+})

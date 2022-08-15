@@ -1,27 +1,27 @@
-import { useSelector } from 'react-redux';
 
+import React from "react";
 
+import { useSelector } from "react-redux";
 
-function List() {
+const List = () => {
 
-
-  const inputState = useSelector(state => {
-    return state.value;
-  });
+  const tasks = useSelector(state => state.toDo.todos);
 
   return (
-    <div>
-      {inputState}
-      {/* <ul>
-        {
-          todos.map(
-            todo => <li key={todo.id}>
-              <span> {todo.text}</span>
-            </li>
-          )
-        }
-      </ul> */}
+    <div className="task-list">
+
+      {
+
+        tasks?.map((task) => (
+
+          <div key={task.id} task={task.title} >
+            {task.title}
+
+          </div>
+        ))
+      }
     </div>
   )
 }
+
 export default List;

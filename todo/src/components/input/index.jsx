@@ -1,45 +1,37 @@
-/* eslint-disable no-sequences */
-import { useDispatch, useSelector } from 'react-redux';
-import { addTask } from '../../store/actions';
+import React, { useState } from "react";
 
+import { useDispatch } from 'react-redux';
 
-import { useState } from "react";
+import { addTask } from "../../store/actions";
+
 
 function InputList() {
   const [inputValue, setInputValue] = useState("");
-  const store = useSelector((store) => store);
+
   const dispatch = useDispatch();
 
-  const inputState = useSelector(state => {
-    return state.value;
-  });
-  const addTasks = () => {
-    dispatch(addTask())
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   }
-  function showInput(event) {
-    setInputValue(event.target.value);
-
-  }
-
-  // state = {
-  //   task: '',
-  // }
-  // handleInputChange = ({ target: { value } }) => {
-  //   this.setState({
-  //     task: value,
-  //   })
-  // }
 
   return (
     <div>
       <form onSubmit={e => e.preventDefault()} >
-        <input onChange={(e) => { setInputValue(e.target.value); }}  ></input>;
+        <input onChange={handleInputChange}></input>;
         <button onClick={function () {
-          console.log({ inputState })
-          dispatch(addTask(inputValue))
-        }} > press</button>
+          if (inputValue !== '') {
+            console.log("hi")
+            dispatch(addTask({
+              title: inputValue
+            }));
+            setInputValue('');
+          }
+
+        }} > press
+        </button>
+
       </form>
-      {inputState}
+
     </div>
   )
 }
