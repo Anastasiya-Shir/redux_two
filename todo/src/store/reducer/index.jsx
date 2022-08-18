@@ -14,12 +14,17 @@ function todoReducer(state = intialState, action) {
         }]
       }
 
-    case 'task/remove':
-      return {}
+
+    case 'task/removeTask':
+      return {
+        ...state,
+        todos: state.todos.filter(task => task.id !== action.payload.id)
+      }
 
     default:
-      return state
+      return state;
   }
 }
+
 
 export { todoReducer };

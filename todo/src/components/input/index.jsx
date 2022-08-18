@@ -14,20 +14,22 @@ function InputList() {
     setInputValue(e.target.value);
   }
 
+  function handleAddTask() {
+    if (inputValue !== '') {
+      console.log("hi")
+      dispatch(addTask({
+        title: inputValue
+      }));
+      setInputValue('');
+    }
+
+  }
+
   return (
     <div>
       <form onSubmit={e => e.preventDefault()} >
         <input onChange={handleInputChange}></input>;
-        <button onClick={function () {
-          if (inputValue !== '') {
-            console.log("hi")
-            dispatch(addTask({
-              title: inputValue
-            }));
-            setInputValue('');
-          }
-
-        }} > press
+        <button onClick={handleAddTask} > press
         </button>
 
       </form>
