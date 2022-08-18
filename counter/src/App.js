@@ -1,4 +1,3 @@
-
 import './App.css';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,10 +5,10 @@ import { decrementCount, incrementCount } from './store/actions';
 
 function App() {
   const store = useSelector((store) => store);
+
   const dispatch = useDispatch();
-  const counterValue = useSelector(state => {
-    return state.value;
-  });
+
+  const counterValue = useSelector(state => state.value);
 
   const plus = () => {
     dispatch(incrementCount())
